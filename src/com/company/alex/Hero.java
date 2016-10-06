@@ -5,7 +5,7 @@ package com.company.alex;
  */
 public class Hero extends GameCharacter {
 
-    public Hero(String name, String charClass, int hp, int attack, int defense) {
+    public Hero(String charClass, String name,  int hp, int attack, int defense) {
         super(name, charClass, hp, attack, defense);
     }
 }

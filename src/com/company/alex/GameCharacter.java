@@ -9,21 +9,43 @@ public class GameCharacter {
     protected int hp;
     protected int attack;
     protected int defense;
+    protected int critChance;
 
     public String getName() {
         return name;
     }
 
-    public GameCharacter(String name, String charClass, int hp, int attack, int defense) {
+    public GameCharacter(String charClass, String name, int hp, int attack, int defense) {
         this.name = name;
         this.charClass = charClass;
         this.attack = attack;
         this.attack = defense;
         this.hp = hp;
+        this.critChance = 10;
     }
 
-    public void ShowInfo(){
+    public void showInfo(){
+        System.out.println("Имя: "+name + "\nЗдоровье: " + hp);
 
+    }
 
+    public int makeAttack(){
+        //20 -> 16..24
+
+        int minAttack = (int)(attack*0.8f);
+        int deltaAttack = (int)(attack*0.4f);
+        int currentAttack = minAttack + GameClass.rand.nextInt(deltaAttack);
+        if (GameClass.rand.nextInt(100)<critChance){
+            currentAttack *= 2;
+            System.out.println(name + " нанес критический урон " + currentAttack + "ед.");
+        } else {
+            System.out.println(name + " нанес урон" + currentAttack + "ед.");
+        }
+        return currentAttack;
+    }
+
+    public void getDamage(int inputDamage){
+        System.out.println(name + " получил " + inputDamage + " урона");
+        hp -= inputDamage;
     }
 }
