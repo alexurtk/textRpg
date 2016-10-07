@@ -6,6 +6,12 @@ package com.company.alex;
 public class Monster extends GameCharacter{
 
     public Monster(String charClass, String name,  int hp, int attack, int defense) {
-        super(name, charClass, hp, attack, defense);
+        super(charClass, name, hp, attack, defense);
+    }
+
+    @Override
+    public void showInfo() {
+        super.showInfo();
+        System.out.println();
     }
 }
